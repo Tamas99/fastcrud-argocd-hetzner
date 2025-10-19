@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastcrud-api
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Tamas99/fastcrud-argocd-hetzner.git
+    targetRevision: main
+    path: charts/fastcrud-api
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fastcrud
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

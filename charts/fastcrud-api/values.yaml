@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: your-dockerhub-user/fastcrud-api
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+resources: {}
+
+env: []
